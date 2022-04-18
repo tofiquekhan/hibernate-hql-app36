@@ -24,10 +24,13 @@ public class Test {
 			sessionFactory = cfg.buildSessionFactory(registry);
 			session = sessionFactory.openSession();
 			tx = session.beginTransaction();
-			
+			/*
 			Query query = session.createQuery("update Employee  set esal = esal+500 where esal < 10000");
 			int row = query.executeUpdate();
-			System.out.println(row+" number of row affected");
+			System.out.println(row+" number of row affected");*/
+			Query query = session.createQuery("delete from Employee where esal<10000");
+			int row = query.executeUpdate();
+			System.out.println(row + " number of row affected");
 			tx.commit();
 		}catch (Exception e) {
 			tx.rollback();
